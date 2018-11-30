@@ -19,4 +19,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("CUSTOMESSAGE", message);
         startActivity(intent);
     }
+
+
 }
