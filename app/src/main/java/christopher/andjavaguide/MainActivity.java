@@ -53,9 +53,30 @@ public class MainActivity extends AppCompatActivity {
         EarthText.setText(String.valueOf(circumference));
         MarsText.setText(String.valueOf(isTitled));
         otherPlanetsText.setText(String.valueOf(otherPlanets));
+        for (int i = 0; i > otherPlanets.size(); i++) {
+            System.out.println(otherPlanets.get(i));
+
+        }
 
 
+    }
 
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("FIRST_PLANET", merc);
+        outState.putInt("PLANET_WEIGHT", weight);
+        outState.putDouble("PLANET_WIDTH", circumference);
+        outState.putBoolean("PLANET_TILT", isTitled);
+        outState.putStringArrayList("OTHER_PLANET", otherPlanets);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        mercText.setText(savedInstanceState.getString("FIRST_PLANET"));
+        venText.setText(savedInstanceState.getInt("PLANET_WEIGHT"));
+        EarthText.setText(String.valueOf(savedInstanceState.getDouble("PLANET_WIDTH")));
+        MarsText.setText(String.valueOf(savedInstanceState.getBoolean("PLANET_TILT")));
+        otherPlanetsText.setText(String.valueOf(savedInstanceState.getStringArrayList("OTHER_PLANET")));
     }
 }
 
