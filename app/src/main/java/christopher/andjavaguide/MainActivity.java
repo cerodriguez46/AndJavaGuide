@@ -8,14 +8,21 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import icepick.Icepick;
+import icepick.State;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    @State
     String merc = "Mercury";
+    @State
     int weight = 102;
+    @State
     double circumference = 12345.25;
+    @State
     boolean isTitled = true;
+    @State
     ArrayList otherPlanets = new ArrayList();
 
     @BindView(R.id.tv1)
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Icepick.restoreInstanceState(this, savedInstanceState);
 
         otherPlanets.add("Venus");
         otherPlanets.add("Earth");
@@ -62,21 +70,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString("FIRST_PLANET", merc);
+        /*outState.putString("FIRST_PLANET", merc);
         outState.putInt("PLANET_WEIGHT", weight);
         outState.putDouble("PLANET_WIDTH", circumference);
         outState.putBoolean("PLANET_TILT", isTitled);
-        outState.putStringArrayList("OTHER_PLANET", otherPlanets);
+        outState.putStringArrayList("OTHER_PLANET", otherPlanets);*/
+        Icepick.saveInstanceState(this, outState);
         super.onSaveInstanceState(outState);
     }
 
-    @Override
+    /*@Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         mercText.setText(savedInstanceState.getString("FIRST_PLANET"));
         venText.setText(savedInstanceState.getInt("PLANET_WEIGHT"));
         EarthText.setText(String.valueOf(savedInstanceState.getDouble("PLANET_WIDTH")));
         MarsText.setText(String.valueOf(savedInstanceState.getBoolean("PLANET_TILT")));
         otherPlanetsText.setText(String.valueOf(savedInstanceState.getStringArrayList("OTHER_PLANET")));
-    }
+    }*/
 }
 
