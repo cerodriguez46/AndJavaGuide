@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         otherPlanets.add("Uranus");
         otherPlanets.add("Neptune");
 
+        mercText.setText(merc);
+        venText.setText(String.valueOf(weight));
+        EarthText.setText(String.valueOf(circumference));
+        MarsText.setText(String.valueOf(isTitled));
+        otherPlanetsText.setText(String.valueOf(otherPlanets));
 
 
 
